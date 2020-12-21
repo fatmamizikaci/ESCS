@@ -1,0 +1,49 @@
+﻿@model ESCS.WebUI.Models.SinavModel
+
+@{
+    ViewData["Title"] = "SinavHazirla";
+}
+
+<h1>Sınav Hazırla</h1>
+
+<h4>Öğrencilerin cavaplaması için elektronik bir sınav içeriği hazırlayın.</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SinavHazirla" method="post">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>           
+            <div class="form-group">
+                <label asp-for="Baslik" class="control-label"></label>
+                <input asp-for="Baslik" class="form-control" />
+                <span asp-validation-for="Baslik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BaslangicTarihi" class="control-label"></label>
+                <input asp-for="BaslangicTarihi" class="form-control" />
+                <span asp-validation-for="BaslangicTarihi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BitisTarihi" class="control-label"></label>
+                <input asp-for="BitisTarihi" class="form-control" />
+                <span asp-validation-for="BitisTarihi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Icerik" class="control-label"></label>
+                <textarea asp-for="Icerik" class="form-control" style="width:350px; height:200px"></textarea>                
+                <span asp-validation-for="Icerik" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <input type="submit" value="Kaydet ve Yayınla" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Listeye Geri Dön</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
